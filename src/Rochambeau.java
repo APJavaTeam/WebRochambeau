@@ -85,7 +85,7 @@ public class Rochambeau {
 	// main -- this runs a game of Rochambeau; you can change the players by creating different
 	// types of Player object or change the loop to vary the number of rounds	
 	public static void main(String[] args) {
-		p1 = new HumanPlayer();
+		p1 = new HumanPlayer("Human");
         System.out.println();
 		p2 = new ComputerPlayer();
         System.out.println(p1.name);

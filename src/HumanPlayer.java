@@ -3,15 +3,15 @@
  */
 public class HumanPlayer extends Player {
 
-    public HumanPlayer(){
-        name = Rochambeau.readLine("What is your name?: ");
+    public HumanPlayer(String s){
+        name = s;
     }
 
     public String choose(){
         String choice;
         do {
-            choice = Rochambeau.readLine("Pick Either Rock, Paper, or Scissors: ");
-        }while(! Rochambeau.isValid(choice));
+            choice = Server.readLine("Pick Either Rock, Paper, or Scissors: ");
+        }while(! Server.isValid(choice));
         return choice.toLowerCase();
     }
 }
