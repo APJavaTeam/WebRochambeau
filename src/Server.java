@@ -41,12 +41,12 @@ public class Server {
 				printStream.println(p1.name +  " chose: " + p1Choice);
 				
 	
-				Thread.currentThread().sleep(100);
+				Thread.currentThread().sleep(500);
 				
 	            System.out.println(p2.name + " chose: " + p2Choice);
 	           	printStream.println(p2.name + " chose: " + p2Choice);
 	           	
-	           	Thread.currentThread().sleep(100);
+	           	Thread.currentThread().sleep(500);
 	            
 	            int winner = findWinner(p1Choice, p2Choice);
 	            
@@ -58,13 +58,13 @@ public class Server {
 			}
 			System.out.println("Final score: ");
 			printStream.println("Final Score: ");
-			Thread.currentThread().sleep(100);
+			Thread.currentThread().sleep(500);
 			System.out.println(p1.name + " scored " + String.valueOf(p1.score));
 			printStream.println(p1.name + " scored " + String.valueOf(p1.score));
-			Thread.currentThread().sleep(100);
+			Thread.currentThread().sleep(500);
 			System.out.println(p2.name + " scored " + String.valueOf(p2.score));
 			printStream.println(p2.name + " scored " + String.valueOf(p2.score));
-			Thread.currentThread().sleep(100);
+			Thread.currentThread().sleep(500);
 		}
 	}
 	public static String readLine(String prompt) {
@@ -86,7 +86,7 @@ public class Server {
 	public static void printResults(int roundNum, int winner, PrintStream prt) throws InterruptedException {
 		System.out.print("Round " + roundNum + ": ");
 		prt.print("Round " + roundNum + ": ");
-		Thread.currentThread().sleep(100);
+		Thread.currentThread().sleep(300);
 		if (winner == PLAYER1_WINS) {
 			System.out.println(p1.name + " wins!");
 			prt.println(p1.name + " wins!");
@@ -102,7 +102,7 @@ public class Server {
 			System.out.println("Error!");
 			prt.println("Error!");
 		}
-		Thread.currentThread().sleep(100);
+		Thread.currentThread().sleep(300);
 	}
 	public static int randomInt(int max) {
 		return (int) (Math.random() * max + 1);
