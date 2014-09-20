@@ -25,46 +25,47 @@ public class Server {
 		System.out.println(socket.getInetAddress() + " has connected.\n");
 		InputStreamReader in = new InputStreamReader(socket.getInputStream());
 		PrintStream printStream = new PrintStream(socket.getOutputStream());
-		
-		for(int i = 0; i < 3; i++){
-			String p1Choice, p2Choice;
-			p1Choice = p1.choose();
-			
-			printStream.println("choose");
-			
-			BufferedReader buffer = new BufferedReader(in);
-			String message = buffer.readLine();
-			
-			p2Choice = message;
-			
-			System.out.println(p1.name +  " chose: " + p1Choice);
-			printStream.println(p1.name +  " chose: " + p1Choice);
-			
-
+		while(true){
+			for(int i = 0; i < 3; i++){
+				String p1Choice, p2Choice;
+				p1Choice = p1.choose();
+				
+				printStream.println("choose");
+				
+				BufferedReader buffer = new BufferedReader(in);
+				String message = buffer.readLine();
+				
+				p2Choice = message;
+				
+				System.out.println(p1.name +  " chose: " + p1Choice);
+				printStream.println(p1.name +  " chose: " + p1Choice);
+				
+	
+				Thread.currentThread().sleep(100);
+				
+	            System.out.println(p2.name + " chose: " + p2Choice);
+	           	printStream.println(p2.name + " chose: " + p2Choice);
+	           	
+	           	Thread.currentThread().sleep(100);
+	            
+	            int winner = findWinner(p1Choice, p2Choice);
+	            
+	            
+	            printResults(i, winner, printStream);
+	            System.out.println();
+	            printStream.println();
+	            System.out.println("\nClient's turn...");
+			}
+			System.out.println("Final score: ");
+			printStream.println("Final Score: ");
 			Thread.currentThread().sleep(100);
-			
-            System.out.println(p2.name + " chose: " + p2Choice);
-           	printStream.println(p2.name + " chose: " + p2Choice);
-           	
-           	Thread.currentThread().sleep(100);
-            
-            int winner = findWinner(p1Choice, p2Choice);
-            
-            
-            printResults(i, winner, printStream);
-            System.out.println();
-            printStream.println();
-            System.out.println("\nClient's turn...");
+			System.out.println(p1.name + " scored " + String.valueOf(p1.score));
+			printStream.println(p1.name + " scored " + String.valueOf(p1.score));
+			Thread.currentThread().sleep(100);
+			System.out.println(p2.name + " scored " + String.valueOf(p2.score));
+			printStream.println(p2.name + " scored " + String.valueOf(p2.score));
+			Thread.currentThread().sleep(100);
 		}
-		System.out.println("Final score: ");
-		printStream.println("Final Score: ");
-		Thread.currentThread().sleep(100);
-		System.out.println(p1.name + " scored " + String.valueOf(p1.score));
-		printStream.println(p1.name + " scored " + String.valueOf(p1.score));
-		Thread.currentThread().sleep(100);
-		System.out.println(p2.name + " scored " + String.valueOf(p2.score));
-		printStream.println(p2.name + " scored " + String.valueOf(p2.score));
-		Thread.currentThread().sleep(100);
 	}
 	public static String readLine(String prompt) {
         String line = null;

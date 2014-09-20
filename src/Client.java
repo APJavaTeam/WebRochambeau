@@ -7,8 +7,11 @@ public class Client {
 		client.run();
 	}
 	public void run() throws UnknownHostException, IOException{
+		InetAddress ip;
+		ip = InetAddress.getByName(readLine("Enter IP: "));
+		int port = Integer.parseInt(readLine("Enter Port: "));
 		System.out.println("Connecting...");
-		Socket socket = new Socket("localhost", 7777);
+		Socket socket = new Socket(ip, port);
 		System.out.println("Connected.\n");
 		System.out.println("Server's turn...");
 		PrintStream printStream = new PrintStream(socket.getOutputStream());
